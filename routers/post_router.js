@@ -5,7 +5,7 @@ const express = require('express')
 const post_router = express.Router()
 
 //function for adding post
-post_router.post('/createpost',[upload,auth], (req, res) => {
+post_router.post('/createpost',[upload], (req, res) => {
     req.files.map(function (items) {
         const Post = new post({
             status: req.body.status,
@@ -23,7 +23,7 @@ post_router.post('/createpost',[upload,auth], (req, res) => {
 
 
 //function for getting post
-post_router.get('/findPost', auth, async (req, res) => {
+post_router.get('/findPost', async (req, res) => {
     post.find().then(function (findAllpost) {
         res.send(findAllpost).catch(function (e) {
             res.send(e)
